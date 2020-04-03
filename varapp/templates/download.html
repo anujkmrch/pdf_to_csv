@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Latest compiled and minified CSS & JS -->
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <title>Download CSV and View: {{key}}</title>
+  </head>
+  <body>
+    <div class="cotainer">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <hr />
+          <div class="alert alert-warning">
+            {% if entry %} Value of {{key}} {{entry.npa_val}} {%endif %}
+          </div>
+          <a
+            class="btn btn-warning"
+            href="{% url 'download_csv' csv.slug %}"
+            role="button"
+            >Download</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

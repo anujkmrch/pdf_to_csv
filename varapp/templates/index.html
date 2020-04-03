@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Latest compiled and minified CSS & JS -->
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <title>Upload document</title>
+  </head>
+  <body>
+    <div class="cotainer">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <h1>Data Parsing</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          {% if messages %} {% for message in messages %} {{message}} {%endfor%}
+          {% endif %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <form
+            action="{% url 'homepage' %}"
+            method="POST"
+            role="form"
+            enctype="multipart/form-data"
+          >
+            {% csrf_token %} {% for field in document_form %} {{ field.errors }}
+
+            <div class="form-group">
+              <label for="firstName" class="col-sm-3 control-label"
+                >{{ field.label }}</label
+              >
+              <div class="col-sm-9">
+                {{ field }}
+                <span class="help-block">{{ field.help_text }}</span>
+              </div>
+            </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
